@@ -1,2 +1,2 @@
 # React-WeatherAPI
-Weather API ile oluşturdugum React projesi
+Context ve Weather API kullandığım React projesi
