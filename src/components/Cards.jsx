@@ -10,12 +10,12 @@ function Cards({city, cityName}) {
            </div>
             <img src={city.day.condition.icon} alt="" />
             <h5>{
-            city.day.condition.text == "Sunny" ? "Güneşli" 
-            : city.day.condition.text == "Partly cloudy" ? "Parçalı Bulutlu" 
-            : city.day.condition.text == "Heavy rain" ? "Sağanak Yağışlı" 
-            : city.day.condition.text == "Patchy rain possible" ? "Yağmur Yağabilir" 
-            : city.day.condition.text == "Moderate rain" ? "Hafif Yağmurlu" 
-            : city.day.condition.text == "Overcast" ? "Bulutlu"
+            city.day.condition.text === "Sunny" ? "Güneşli" 
+            : city.day.condition.text === "Partly cloudy" ? "Parçalı Bulutlu" 
+            : city.day.condition.text === "Heavy rain" ? "Sağanak Yağışlı" 
+            : city.day.condition.text === "Patchy rain possible" ? "Yağmur Yağabilir" 
+            : city.day.condition.text === "Moderate rain" ? "Hafif Yağmurlu" 
+            : city.day.condition.text === "Overcast" ? "Bulutlu"
             : city.day.condition.text  }</h5>
             <div className="temp">
             <h5>Gündüz {city.day.maxtemp_c}</h5>
