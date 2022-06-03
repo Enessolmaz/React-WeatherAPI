@@ -35,7 +35,7 @@ function Inputs() {
     }
     // http://api.weatherapi.com/v1/forecast.json?key=c1a5bffd0f9e4956b32204735221505&q=London&days=3&aqi=no&alerts=no
     let searchClick = async(e) => {
-        if(city.city == ''){
+        if(city.city === ''){
             notification('Lütfen Şehir İsmi Giriniz.')
             return false;
         }
