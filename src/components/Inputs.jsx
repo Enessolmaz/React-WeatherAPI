@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react'
+import axios from 'axios';
 import Cards from './Cards';
 import Context from './Context'
 
 
 function Inputs() {
+    
         const zeroedInputValue = {city : '' }
         const {cityName, setCityName, ApiKEY, wheatherData,setWeatherData} = useContext(Context)
         const [city, setCity] = useState(zeroedInputValue);
@@ -21,10 +23,9 @@ function Inputs() {
             div.className = 'alert';
             div.innerHTML = msg;
             document.body.appendChild(div);
-        
+
             setTimeout(() => div.classList.add('active'), 1);
             setTimeout(() => div.classList.remove('active'), 1000);
-        
         }
         
 
@@ -35,17 +36,35 @@ function Inputs() {
     }
     // http://api.weatherapi.com/v1/forecast.json?key=c1a5bffd0f9e4956b32204735221505&q=London&days=3&aqi=no&alerts=no
     let searchClick = async(e) => {
-        if(city.city == ''){
+        if(city.city === ''){
             notification('Lütfen Şehir İsmi Giriniz.')
             return false;
         }
-        const data = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${ApiKEY}&q=${city.city}&days=3&aqi=no&alert=no`)
-        const result = await data.json();
-        // console.log(result)
 
-        setWeatherData(result.forecast.forecastday)
+        // FETCH 
+
+        // const data = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${ApiKEY}&q=${city.city}&days=3&aqi=no&alert=no`)
+        // const result = await data.json();
+        // console.log(result)
+        // setWeatherData(result.forecast.forecastday)
+         //  setCityName(result.location.name)
+
+   else(
+    axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${ApiKEY}&q=${city.city}&days=7&aqi=no&alert=no`) 
+    .then(res => {
+        setWeatherData(res.data.forecast.forecastday)
+        setCityName(res.data.location.name)
+    })
+    .catch(err => {
+        console.log("Girilen şehir bulunamadı", err)
+        notification("Girilen şehir bulunamadı");
+    })
+   )
+
+
+
+       
         notification(`Girilen Şehir ${city.city}`);
-         setCityName(result.location.name)
          setCity(zeroedInputValue)
         e.preventDefault()
        
