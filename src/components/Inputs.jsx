@@ -50,7 +50,7 @@ function Inputs() {
          //  setCityName(result.location.name)
 
    else(
-    axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${ApiKEY}&q=${city.city}&days=7&aqi=no&alert=no`) 
+    axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${ApiKEY}&q=${city.city}&days=7&aqi=no&alert=no`) 
     .then(res => {
         setWeatherData(res.data.forecast.forecastday)
         setCityName(res.data.location.name)
