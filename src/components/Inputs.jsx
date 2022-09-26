@@ -11,7 +11,7 @@ function Inputs() {
         const [city, setCity] = useState(zeroedInputValue);
 
 
-            // Prototurk ALERT 
+           
         let notification = (msg) => {
        
             let old_div = document.querySelector('.alert');
